@@ -1,0 +1,410 @@
+/*    all_margin    */
+
+* {
+    margin: 0;
+}
+
+/*    body_basic    */
+
+body {
+    overflow-x: hidden;
+}
+
+/*    loading   */
+@keyframes lds-eclipse {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes lds-eclipse {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.loading {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+}
+.loading .left,.loading .right {
+    position: absolute;
+    top: 0; bottom: 0;
+    background: #ffffff;
+    transition: all linear 2s;
+}
+.loading .left {
+    left: 0; 
+    width: 50%;
+}
+.loading .right {
+    right: 0;
+    width: 50%;
+}
+.loading .lds-eclipse {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) !important;
+    margin-top: -80px;
+    z-index: 1;
+}
+.loading .lds-eclipse div {
+  position: absolute;
+  -webkit-animation: lds-eclipse 1s linear infinite;
+  animation: lds-eclipse 1s linear infinite;
+  width: 160px;
+  height: 160px;
+  top: 20px;
+  left: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 0 0 #598482;
+  -webkit-transform-origin: 80px 82px;
+  transform-origin: 80px 82px;
+}
+.loading .lds-eclipse {
+  width: 200px !important;
+  height: 200px !important;
+  -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+  transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+}
+.loading.end .lds-eclipse {
+    display: none;
+}
+.loading.end .left {
+    left: -50%;
+}
+.loading.end .right {
+    right: -50%;
+}
+
+/*    control    */
+
+.control {
+    position: fixed;
+    color: #fff;
+    z-index: 2;
+    right: 100px;
+    top: 20px;
+    font-size: 13px;
+    user-select: none;
+}
+
+.status,.sound {
+    cursor: pointer;
+}
+
+/*     page_basic     */
+
+.page {
+    position: relative;
+    color: #fff;
+    background: #000;
+    overflow: hidden;
+    will-change: left,top;
+}
+
+.page img {
+    position: absolute;
+    will-change: left,top;
+}
+
+/*     page_one    */
+
+.page_one {
+    background-image: url('/static/img/bg.jpg');
+    background-size: 100% 100%;
+}
+
+.page_one .girl {
+    left: 500px;
+    bottom: 0;
+}
+
+.page_one .chair {
+    bottom: 0;
+}
+
+/*    page_two     */
+
+.page_two {
+    background-image: url('/static/img/bg(1).jpg');
+    background-size: 100% 100%;
+}
+
+.page_two .girl {
+    bottom: 0;
+}
+
+/*    page_three     */
+
+.page_three {
+    overflow: visible;
+    background-image: url('/static/img/bg(2).jpg');
+    background-size: 100% 100%;
+    z-index: 1;
+}
+
+.page_three .verre {
+
+}
+
+.page_three .girl {
+    bottom: 0;
+    left: 50%;
+    margin-left: -100px;
+}
+
+/*    page_four     */
+
+.page_four {
+    background-image: url('/static/img/bg(3).jpg');
+    background-size: 100% 100%;
+}
+
+.page_four .girl {
+    bottom: 0;
+}
+
+/*    page_five    */
+
+.page_five {
+    background-image: url('/static/img/bg(4).jpg');
+    background-size: 100% 100%;
+    z-index: 1;
+}
+
+.page_five .dog_left {
+    bottom: 0;
+}
+
+.page_five .dog_right {
+    top: 0;
+}
+
+.change_first {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+/*    page_six    */
+
+.page_six {
+    background-image: url('/static/img/bg_hide.jpg');
+    background-size: 100% 100%;
+    left: 100%;
+    z-index: 1;
+}
+
+.page_six .girl {
+    right: -200px;
+    bottom: 0;
+}
+
+/*    page_seven    */
+
+.page_seven {
+    background-image: url('/static/img/bg(5).jpg');
+    background-size: 100% 100%;
+    left: 100%;
+}
+
+.left_left {
+    left: 100%;
+    z-index: -1;
+}
+
+/*    page_eight    */
+
+.page_eight {
+    background-image: url('/static/img/bg(6).jpg');
+    background-size: 100%%;
+    background-position: 0px;
+    left: 100%;
+    z-index: 1;
+}
+
+/*    page_nine    */
+
+.page_nine {
+    background-image: url('/static/img/bg(7).jpg');
+    background-size: 100% 100%;
+    left: 100%;
+    z-index: 2;
+}
+
+.page_nine .girl {
+    bottom: 0;
+    left: -800px;
+}
+
+/*    page_battle   */
+
+.page_battle {
+    left: 100%;
+    margin-top: 30px;
+}
+
+.page_battle img {
+    height: 100%;
+    width: 100%;
+}
+
+/*    left_left_end   */
+
+.left_left_end {
+    left: 100%;
+    z-index: -1;
+}
+
+/*    page_ten   */
+
+.page_ten {
+    background-image: url('/static/img/bg(8).jpg');
+    background-size: 100% 100%;
+    left: 100%;
+}
+
+.page_ten .girl {
+    top: 15%;
+    left: 30%;
+}
+
+/*    page_eleven   */
+
+.page_eleven {
+    background-image: url('/static/img/bg(9).jpg');
+    background-size: 100% 100%;
+    left: 100%;
+}
+
+.page_eleven .girl {
+/*    top: 15%;
+    left: 30%;*/
+}
+
+/*    page_twelve   */
+
+.page_twelve {
+    background-image: url('/static/img/bg(10).jpg');
+    background-size: 100% 100%;
+    left: 100%;
+}
+
+.page_twelve .girl {
+    right: -150px;
+    bottom: 0;
+}
+
+.page_twelve .car {
+    bottom: 130px;
+    left: 30%;
+}
+
+
+/*     page_thirteen    */
+
+.page_thirteen {
+    background-image: url('/static/img/bg(11).jpg');
+    background-size: 100% 100%;
+    left: 100%;
+}
+
+.page_thirteen .girl {
+    bottom: 0;
+    left: 50%;
+}
+
+/*     page_fourteen    */
+
+.page_fourteen {
+    background-image: url('/static/img/bg(12).jpg');
+    background-size: 100% 100%;
+    left: 0%;
+}
+
+.page_fourteen .girl {
+    left: 40%;
+}
+
+/*     page_fiveteen    */
+
+.page_fiveteen {
+    background-image: url('/static/img/bg(13).jpg');
+    background-size: 100% 100%;
+    left: 0%;
+}
+
+/*     page_sixteen    */
+
+.page_sixteen {
+    background-image: url('/static/img/bg(14).jpg');
+    background-size: 100% 100%;
+    left: 100%;
+}
+
+/*     page_seventeen    */
+
+.page_seventeen {
+    background-image: url('/static/img/bg(15).jpg');
+    background-size: 100% 100%;
+    left: 100%;
+}
+
+/*     page_eightteen  page_light_on   */
+
+.page_eightteen {
+    background-image: url('/static/img/bg(16).jpg');
+    background-size: 100% 100%;
+    left: 100%;
+    opacity: 0.4;
+}
+
+.page_eightteen.lightOn {
+    background-image: url('/static/img/bg(16_2).jpg');
+}
+
+.page_eightteen .girl {
+    bottom: 0;
+    left: -500px;
+}
+
+/*   page_nineteen  */
+
+.page_nineteen {
+    background-image: url('/static/img/bg(17).jpg');
+    background-size: 100% 100%;
+    left: 0;
+    z-index: -1;
+}
+
+/*   page_end  */
+
+.page_end {
+    left: 0;
+}
+
+
+
