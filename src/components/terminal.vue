@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Typed from 'typed.js'
+import Typed from 'typed.js';
 export default {
     name: 'terminal',
     props: ['options'],
