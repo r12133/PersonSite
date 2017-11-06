@@ -82,11 +82,10 @@
 </template>
 
 <script>
-    import '../adapter/pc/js/skrollr.stylesheet.min.js';
+    // import '../adapter/pc/js/skrollr.stylesheet.min.js';
     import '../adapter/pc/js/experience.min.js';
 </script>
 
 <style scoped>
     @import '../adapter/pc/css/experience.min.css';
 </style>
-
