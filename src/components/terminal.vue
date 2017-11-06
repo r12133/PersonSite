@@ -1,13 +1,10 @@
 <template>
     <div id="terminal">
-        <div class="topbar">
-            <div class="close">x</div>
-            <div class="title">hello guys</div>
-        </div>
-        <div>
-            <span class="start">&nbsp;$&nbsp;</span>
-            <div class="edit" contenteditable="true">&nbsp;</div>
-        </div>
+        <div class="con"></div>
+        <div><!-- 
+             --><span class="start">&nbsp;$</span><!-- 
+             --><div class="edit" contenteditable="true">&nbsp;</div><!-- 
+         --></div>
     </div>
 </template>
 
@@ -15,12 +12,55 @@
 import Typed from 'typed.js'
 export default {
     name: 'terminal',
+    props: ['options'],
     data(){
         return {
         }
     },
-    props: ['options'],
+    methods: {
+        handleDir(dir,fn){
+            var terminal = document.querySelector('#terminal');
+            var div = document.createElement('div');
+            div.classList.add('con');
+            var msg;
+            var options = '';
+            var tag = true;
+            if(dir.indexOf('h') == 0) {
+                div.innerHTML = `
+                    <dl>
+                        <dd>h</dd><dt> 输入h来获得更多帮助 </dt> <br />
+                        <dd>ls</dd><dt> 显示所有路由 </dt> <br />
+                        <dd>cd</dd><dt> 更改路由 </dt>
+                    </dl>
+                `;
+            }else if(dir.indexOf('ls') == 0) {
+                options = dir.split('ls')[1].trim();
+                 div.innerHTML = `
+                    <span>Index/</span><span>Parrelex/</span>
+                `;
+            }else if(dir.indexOf('cd') == 0){
+                options = dir.split('cd')[1].trim().toLocaleLowerCase();
+                var routerArr = ['index','parrelex'];
+                if(routerArr.indexOf(options) > -1) {
+                    tag = false;
+                    this.$router.push({name: options});
+                }else {
+                    msg = '-bash: ' + 'cd: ' + options + ': No such file or directory';
+                    div.innerHTML = msg;
+                }
+            }else if(dir == 'clear') {
+                terminal.innerHTML =  ``;
+            }else {
+                msg = '-bash: ' + dir + ': command not found';
+                div.innerHTML = msg;
+            }
+
+            tag && terminal.appendChild(div);
+            fn && fn();
+        }
+    },
     mounted() {
+        var vue = this;
         if(this.options){
             var typed = new Typed('#terminal .typing',this.options);
         }
@@ -32,33 +72,20 @@ export default {
         terminal.addEventListener('keydown', function(e){
             e = e || window.event;
             if(e.keyCode == 13) {
+                e.preventDefault();
                 var _this = e.target;
                 _this.removeAttribute('contenteditable');
                 var dir = _this.innerText;
-                this.handleDir(dir, function(){
+                vue.handleDir(dir.trim(), function(){
                     var content = document.createElement('div');
                     content.innerHTML = `
-                        <span class="start">&nbsp;$&nbsp;</span>
-                        <div class="edit" contenteditable="true">&nbsp;</div>
+                        <span class="start">&nbsp;$&nbsp;</span><div class="edit" contenteditable="true">&nbsp;</div>
                     `;
                     terminal.appendChild(content);
                     terminal.click();
                 });
             }
         })
-    },
-    methods: {
-        handleDir(dir,fn){
-            var msg;
-            switch(dir){
-                case 'ls':
-                break;
-                default: 
-                    msg = '-bash:' + dir + ' : command not found';
-            }
-            console.log(msg);
-            fn && fn();
-        }
     }
 }
 </script>
@@ -66,6 +93,7 @@ export default {
 <style lang='scss'>
 
 #terminal {
+    overflow: scroll;
     opacity: .9;
     z-index: 1;
     position: absolute;
@@ -79,33 +107,6 @@ export default {
     * {
         user-select: none;
     }
-    .topbar {
-        height: 30px;
-        background:#f3f2f2;
-        cursor: move;
-        position: relative;
-        .close {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 10px;
-            border-radius: 50%;
-            background: #dc7a7a;
-            width: 16px;
-            height: 16px;
-            font-size: 0px;
-            line-height: 17px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .close:hover {
-            font-size: 14px;
-        }
-        .title {
-            text-align: center;
-            line-height: 30px;
-        }
-    }
     .typed-cursor {
         display: none !important;
     }
@@ -115,7 +116,7 @@ export default {
         font-size: 14px;
         line-height: 1.15;
     }
-    .start,.edit {
+    .start,.edit,.con {
         // caret-color: transparent;
         display: inline-block;
         font-family: monaco;
@@ -124,6 +125,20 @@ export default {
         font-size: 14px;
         padding: 0;
         line-height: 1.5;
+    }
+    .con {
+        padding-left: 8px;
+        span {
+            margin-right: 20px;
+        }
+        .file {
+            color: green;
+        }
+        dl {
+            padding: 0; margin: 5px 0; padding-left: 10px;
+            dd {width: 50px;}
+            dd,dt { display: inline-block; margin: 0px;}
+        }
     }
 }
 </style>
