@@ -36,11 +36,11 @@ export default {
             }else if(dir.indexOf('ls') == 0) {
                 options = dir.split('ls')[1].trim();
                  div.innerHTML = `
-                    <span>Index/</span><span>Parrelex/</span>
+                    <span>Index/</span><span>Parrelex/</span><span>Smart/</span>
                 `;
             }else if(dir.indexOf('cd') == 0){
                 options = dir.split('cd')[1].trim().toLocaleLowerCase();
-                var routerArr = ['index','parrelex'];
+                var routerArr = ['index','parrelex','smart'];
                 if(routerArr.indexOf(options) > -1) {
                     tag = false;
                     this.$router.push({name: options});
@@ -62,7 +62,7 @@ export default {
     mounted() {
         var vue = this;
         if(this.options){
-            var typed = new Typed('#terminal .typing',this.options);
+            var typed = new Typed('#terminal .edit',this.options);
         }
         var terminal = document.querySelector('#terminal');
         terminal.addEventListener('click', function(){
@@ -93,7 +93,7 @@ export default {
 <style lang='scss'>
 
 #terminal {
-    overflow: scroll;
+    overflow: auto;
     opacity: .9;
     z-index: 1;
     position: absolute;
