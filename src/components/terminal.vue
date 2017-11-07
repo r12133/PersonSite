@@ -36,11 +36,11 @@ export default {
             }else if(dir.indexOf('ls') == 0) {
                 options = dir.split('ls')[1].trim();
                  div.innerHTML = `
-                    <span>Index/</span><span>Parrelex/</span><span>Smart/</span>
+                    <span>Index/</span><span>Parrelex/</span><span>Smart/</span><span>aboutme/</span>
                 `;
             }else if(dir.indexOf('cd') == 0){
                 options = dir.split('cd')[1].trim().toLocaleLowerCase();
-                var routerArr = ['index','parrelex','smart'];
+                var routerArr = ['index','parrelex','smart','aboutme'];
                 if(routerArr.indexOf(options) > -1) {
                     tag = false;
                     this.$router.push({name: options});

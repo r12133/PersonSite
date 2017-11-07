@@ -83,7 +83,13 @@
 
 <script>
     // import '../adapter/pc/js/skrollr.stylesheet.min.js';
-    import '../adapter/pc/js/experience.min.js';
+    import experience from '../adapter/pc/js/experience.min.js';
+    export default {
+       name: 'parrelex',
+       mounted() {
+          experience();
+       }
+    }
 </script>
 
 <style scoped>
