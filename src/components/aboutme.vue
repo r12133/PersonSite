@@ -64,6 +64,7 @@
         display: inline-block;
         position: relative;
         margin-top: 70px;
+        cursor: url('/static/img/pencil.png'),auto;
     }
     article {
         text-align: left;

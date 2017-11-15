@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <terminal></terminal>
+        <!-- <terminal></terminal> -->
         <video class='homevideo' src="static/video/homevideo.mp4" autoplay="true" loop="true"></video>
     </div>
 </template>
