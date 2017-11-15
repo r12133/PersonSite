@@ -5,6 +5,7 @@
             <article>
                 <span class="top"></span> <p class="top_br"><br></p>
                 <span class="title"></span> 
+                <div @click='play' class="btn"></div>
             </article>
         </div>
     </div>
@@ -14,6 +15,11 @@
     import Typed from 'typed.js';
     export default {
         name: 'aboutme',
+        data() {
+            return {
+                tag: false
+            }
+        },
         mounted(){
             var typed_one = new Typed('#aboutme .top',{
                 strings: [
@@ -50,6 +56,26 @@
             setTimeout(() => {
                 document.querySelector('.typed-cursor').style.display = 'none';
             },41660)
+        },
+        methods: {
+            play() {
+                this.tag = !this.tag;
+                var utterThis = new window.SpeechSynthesisUtterance();
+                utterThis.text = `
+                    Hi Guys,I am a front-end engineer and hope to become a front-end architect in the future.
+                    I have a persistent pursuit of new technologies and will solve the front end problems with strange ideas.
+                    Sometimes I can write code addiction and have a certain understanding of the reuse of vue code.
+                    This is me, an attitude farmer.
+                `;
+                utterThis.lang = 'en-us';
+                utterThis.rate = .7;
+                window.speechSynthesis.speak(utterThis);
+                if(this.tag) {
+                    window.speechSynthesis.resume();
+                }else {
+                    window.speechSynthesis.pause();
+                }
+            }
         }
     }
 </script>
@@ -99,6 +125,18 @@
     }
     .indent {
         padding:0 10px;
+    }
+    .btn {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        width: 10px; height: 10px; background: #fff;
+        border: 10px double #333;
+        border-radius: 50%;
+    }
+    .btn:hover {
+        background: #f9f9f9;
+        border-color: #b9832a;
     }
 }
 </style>
