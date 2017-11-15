@@ -47,6 +47,9 @@
                  });
             },5000)
 
+            setTimeout(() => {
+                document.querySelector('.typed-cursor').style.display = 'none';
+            },41660)
         }
     }
 </script>
