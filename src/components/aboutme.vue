@@ -21,6 +21,9 @@
             }
         },
         mounted(){
+            var audio = document.createElement('audio');
+            audio.src = '/static/audio/typing.wav';
+            audio.loop = true;
             var typed_one = new Typed('#aboutme .top',{
                 strings: [
                     "Starting Typing...<br/> ^500 `waiting...`<br/> ^500 `ready...`",                  
@@ -35,6 +38,7 @@
                 typed_one.destroy();
                 var top_br = document.querySelector('.top_br');
                 top_br.parentNode.removeChild(top_br);
+                audio.play();
                 var typed_two = new Typed('#aboutme .title',{
                     strings: [
                         "Hi gays",
@@ -50,6 +54,9 @@
                     backSpeed: 60,
                     backDelay: 100,
                     startDelay: 700,
+                    onComplete: function(){
+                        audio.pause();
+                    }
                  });
             },5000)
 
