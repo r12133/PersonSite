@@ -8,7 +8,7 @@ import zhou from './assets/'
 
 Vue.use(zhou)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
