@@ -1,26 +1,15 @@
 <template>
     <div class="home">
-        <!-- <terminal></terminal> -->
         <video class='homevideo' src="static/video/homevideo.mp4" autoplay="true" loop="true"></video>
+        <div class="abs">
+            
+        </div>
     </div>
 </template>
 
 <script>
 export default {
     name: 'home',
-    data(){
-        return {
-            options: {
-                strings: ['hello-world','this is a terminal'],
-                typeSpeed: 40,
-                backSpeed: 40,
-                backDelay: 500,
-                startDelay: 1000,
-                // loop: true,
-                fadeOut: true
-            }
-        }
-    }
 }
 </script>
 
@@ -35,6 +24,9 @@ export default {
         object-fit:fill;
         box-sizing: border-box;
         display: block;
+    }
+    .abs {
+        position: absolute; left: 0; right: 0; top: 0; bottom: 0;
     }
 }
 </style>

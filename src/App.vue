@@ -73,7 +73,7 @@ export default {
         height: 100%;
         background: #fff;
         position: fixed;
-        z-index: 3;
+        z-index: 5;
         will-change: margin-left;
         background: #010001;
         margin-left: -230px;
